@@ -11,7 +11,7 @@ public class StartClass {
 
 	public static void main(String[] args) {
 		Graph graph = new Graph();
-		
+
 		try {
 			FileReader fin = new FileReader(args[0]);
 			Scanner graphFile = new Scanner(fin);
@@ -41,7 +41,7 @@ public class StartClass {
 		}
 
 		Scanner in = new Scanner(System.in);
-//		while (processRequest(in, graph))
-//			;
+		while (true)
+			;
 	}
 }

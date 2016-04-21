@@ -25,9 +25,15 @@ public class Graph implements MapStructure {
 		EDGE_MAP.put(edgeName, edge);
 	}
 
-	/* If edge does not exist, add it to EDGE_MAP; in any case return edge */
+	/* return the edge with given name */
 	public Edge getEdge(String edgeName) {
 		Edge edge = EDGE_MAP.get(edgeName);
 		return edge;
+	}
+
+	/* reset the 'distance' and 'prev' variables of all vertices to zero and null respectively */
+	public static void resetAllVertices() {
+		for (Vertex vertex : VERTEX_MAP.values())
+			vertex.reset();
 	}
 }

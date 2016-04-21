@@ -11,6 +11,6 @@ public class Edge implements MapStructure {
 		this.edgeName = edgeName;
 		this.weight = weight;
 
-		//EDGE_MAP.put(edgeName, weight);
+		// EDGE_MAP.put(edgeName, weight);
 	}
 }

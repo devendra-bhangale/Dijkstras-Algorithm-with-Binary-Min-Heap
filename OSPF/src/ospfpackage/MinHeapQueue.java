@@ -17,11 +17,13 @@ public class MinHeapQueue {
 	}
 
 	/* insert a new vertex at the end of the queue */
-	public void insert(Vertex vertex) {
+	public int insert(Vertex vertex) {
 		size++;
 		queue.put(size, vertex);
 
-		floatUp(); // keep swapping this new vertex with its parent, until the parent is at least as large or you reach root
+		int index = floatUp(size); // keep swapping this new vertex with its parent, until the parent is at least as large or you reach root
+		
+		return index;
 	}
 
 	/* extract the Vertex (at root) with minimum distance from source */
@@ -39,13 +41,21 @@ public class MinHeapQueue {
 		return vertex;
 	}
 
+	/* New key has lower value; hence update the value and increase key priority */
+	public int increasePriority(int index, double dist, Vertex prevVertex) {
+		queue.get(index).distance = dist;
+		queue.get(index).prev = prevVertex;
+		return floatUp(index);
+	}
+
 	/* keep swapping the newly added vertex with its parent, until the parent is at least as large or you reach root */
-	public void floatUp() {
-		int index = size;
+	public int floatUp(int index) {
 		while (hasParent(index) && (getVertex(getParentIndex(index)).distance > getVertex(index).distance)) {
 			swap(index, getParentIndex(index));
 			index = getParentIndex(index);
 		}
+		
+		return index;
 	}
 
 	/* float down the vertex at root (after min extraction) to its correct position in the min heap */
@@ -71,7 +81,7 @@ public class MinHeapQueue {
 		}
 	}
 
-	/* swap the two vertexes at given 'index' and 'parent' positions in the min heap queue */
+	/* swap the two vertices at given 'index' and 'parent' positions in the min heap queue */
 	public void swap(int index, int parent) {
 		Vertex temp = getVertex(index);
 
@@ -116,5 +126,10 @@ public class MinHeapQueue {
 	/* return the 'index' of the right child of the given parent at index 'index' */
 	protected int getRightChildIndex(int index) {
 		return ((index * 2) + 1);
+	}
+
+	/* return size of the queue */
+	public int getQueueSize() {
+		return size;
 	}
 }

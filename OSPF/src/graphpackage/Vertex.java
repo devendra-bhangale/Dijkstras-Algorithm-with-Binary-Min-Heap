@@ -8,18 +8,21 @@ public class Vertex implements MapStructure {
 	public int vertexStatus;
 	public String name; // Vertex name
 	public List<Vertex> adj; // Adjacent vertices
-	
-	public int distance;
+
+	public int queueIndex;
+	public double distance;
 	public Vertex prev;
 
 	public Vertex(String name) {
 		vertexStatus = UP;
 		this.name = name;
 		adj = new LinkedList<Vertex>();
+		reset();
 	}
-	
-	public void reset(){
-		distance = 0;
+
+	public void reset() {
+		queueIndex = 0;
+		distance = (double) INFINITY;
 		prev = null;
 	}
 }
