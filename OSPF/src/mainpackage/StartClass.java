@@ -6,6 +6,7 @@ import java.util.Scanner;
 import java.util.StringTokenizer;
 
 import graphpackage.Graph;
+import ospfpackage.DijkstraAlgo;
 
 public class StartClass {
 
@@ -41,7 +42,31 @@ public class StartClass {
 		}
 
 		Scanner in = new Scanner(System.in);
-		while (true)
-			;
+		while (true) {
+			try{
+				System.out.print("Enter query: ");
+				String line = in.nextLine();
+				StringTokenizer command = new StringTokenizer(line);
+				
+				String query = command.nextToken();
+				String srcVertex = command.nextToken();
+				String destVertex = command.nextToken();
+
+				DijkstraAlgo dijkstraAlgo = new DijkstraAlgo(srcVertex);
+				dijkstraAlgo.getShortestPath(srcVertex, destVertex);
+				
+				String path = destVertex;
+				String prevVertex = (Graph.VERTEX_MAP.get(destVertex).prev.name != null) ? Graph.VERTEX_MAP.get(destVertex).prev.name : "";
+				while(prevVertex != "" && !prevVertex.equals(srcVertex)){
+					path = prevVertex + "->" + path;
+					prevVertex = Graph.VERTEX_MAP.get(prevVertex).prev.name;
+				}
+				path = srcVertex + " -> " + path + "\n";
+				System.out.print("Shortest Path: " + path);
+				
+			}catch(Exception e){
+				e.printStackTrace();
+			}
+		}
 	}
 }

@@ -17,8 +17,10 @@ public class DijkstraAlgo {
 		source.distance = 0; // set source distance = 0
 
 		queue = new MinHeapQueue(); // create a new queue for the shortest path algorithm and insert all the vertices in it
-		for (Vertex vertex : Graph.VERTEX_MAP.values())
+		for (Vertex vertex : Graph.VERTEX_MAP.values()){
+			//vertex.queueIndex = queue.insert(vertex);
 			queue.insert(vertex);
+		}
 	}
 
 	/* run the Dijkstra's Algorithm here to get the shortest path from source to destination */
@@ -26,16 +28,18 @@ public class DijkstraAlgo {
 		while (queue.getQueueSize() != 0) {
 			Vertex currVertex = queue.extractMin();
 
-			for (Vertex adjVertex : currVertex.adj) {
-				Edge currEdge = Graph.EDGE_MAP.get(currVertex.name + adjVertex.name);
-
-				if (adjVertex.distance > (currVertex.distance + currEdge.weight)) {
-					adjVertex.distance = currVertex.distance + currEdge.weight;
-					adjVertex.prev = currVertex;
-					
-					adjVertex.queueIndex = queue.increasePriority(adjVertex.queueIndex, adjVertex.distance, adjVertex.prev);
+			if(currVertex.adj != null){
+				for (Vertex adjVertex : currVertex.adj) {
+					Edge currEdge = Graph.EDGE_MAP.get(currVertex.name + adjVertex.name);
+	
+					if (adjVertex.distance > (currVertex.distance + currEdge.weight)) {
+						adjVertex.distance = currVertex.distance + currEdge.weight;
+						adjVertex.prev = currVertex;
+						
+						adjVertex.queueIndex = queue.increasePriority(adjVertex.queueIndex, adjVertex.distance, adjVertex.prev);
+					}
+	
 				}
-
 			}
 		}
 	}

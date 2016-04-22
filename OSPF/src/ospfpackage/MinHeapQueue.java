@@ -17,13 +17,12 @@ public class MinHeapQueue {
 	}
 
 	/* insert a new vertex at the end of the queue */
-	public int insert(Vertex vertex) {
+	public void insert(Vertex vertex) {
 		size++;
+		vertex.queueIndex = size;
 		queue.put(size, vertex);
 
-		int index = floatUp(size); // keep swapping this new vertex with its parent, until the parent is at least as large or you reach root
-		
-		return index;
+		floatUp(size); // keep swapping this new vertex with its parent, until the parent is at least as large or you reach root
 	}
 
 	/* extract the Vertex (at root) with minimum distance from source */
@@ -32,11 +31,14 @@ public class MinHeapQueue {
 		Vertex vertex = getVertex(ROOT);
 
 		queue.remove(ROOT); // remove min vertex at root
-		queue.put(ROOT, getVertex(index)); // replace the root with last vertex
-		queue.remove(index); // remove the last vertex
+		if(index > 1){
+			queue.put(ROOT, getVertex(index)); // replace the root with last vertex
+			queue.remove(index); // remove the last vertex
+			getVertex(ROOT).queueIndex = ROOT;
+		}
 		size--;
 
-		floatDown(); // float down the value at root to min-heapify
+		floatDown(ROOT); // float down the value at root to min-heapify
 
 		return vertex;
 	}
@@ -54,30 +56,28 @@ public class MinHeapQueue {
 			swap(index, getParentIndex(index));
 			index = getParentIndex(index);
 		}
-		
+
 		return index;
 	}
 
 	/* float down the vertex at root (after min extraction) to its correct position in the min heap */
-	public void floatDown() {
-		int index = ROOT;
+	public void floatDown(int parent) {
 		int smallerChild;
-
-		while (hasLeftChild(index)) {
+		while (hasLeftChild(parent)) {
 			/* find the index of the smaller child amongst the left child and right child if it exists */
-			if (hasRightChild(index))
-				smallerChild = (getVertex(getLeftChildIndex(index)).distance <= getVertex(getRightChildIndex(index)).distance) ? getLeftChildIndex(index) : getRightChildIndex(index);
+			if (hasRightChild(parent))
+				smallerChild = (getVertex(getLeftChildIndex(parent)).distance <= getVertex(getRightChildIndex(parent)).distance) ? getLeftChildIndex(parent) : getRightChildIndex(parent);
 			else
-				smallerChild = getLeftChildIndex(index);
+				smallerChild = getLeftChildIndex(parent);
 
 			/* check if the parent is greater than the child and swap if yes or else break */
-			if (getVertex(index).distance > getVertex(smallerChild).distance)
-				swap(index, smallerChild);
+			if (getVertex(parent).distance > getVertex(smallerChild).distance)
+				swap(smallerChild, parent);
 			else
 				break;
 
-			/* update the index to its latest position */
-			index = smallerChild;
+			/* update the parent index to its latest position */
+			parent = smallerChild;
 		}
 	}
 
@@ -87,9 +87,11 @@ public class MinHeapQueue {
 
 		queue.remove(index);
 		queue.put(index, getVertex(parent));
+		getVertex(index).queueIndex = index;
 
 		queue.remove(parent);
 		queue.put(parent, temp);
+		getVertex(parent).queueIndex = parent;
 	}
 
 	/* get the vertex at mentioned 'index' */
