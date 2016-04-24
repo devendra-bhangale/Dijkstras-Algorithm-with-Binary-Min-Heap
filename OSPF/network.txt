@@ -1,6 +1,6 @@
 Belk Grigg 1.2
 Belk Health 0.5	
-Belk Duke 0.6
+Duke Belk 0.6
 Belk Woodward 0.25
 Woodward Grigg 1.1
 Grigg Duke 1.6

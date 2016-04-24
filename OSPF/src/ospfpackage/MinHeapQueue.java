@@ -6,9 +6,9 @@ import graphpackage.Vertex;
 
 /* Binary Minimum Heap Priority Queue */
 public class MinHeapQueue {
-	protected final int ROOT = 1;
-	protected HashMap<Integer, Vertex> queue;
-	protected int size;
+	protected final int ROOT = 1; // root vertex is at positon 1 in the queue
+	protected HashMap<Integer, Vertex> queue; // data structure to hold the queue
+	protected int size; // current number of vertices in the queue
 
 	/* create a new empty min heap queue */
 	public MinHeapQueue() {
@@ -16,7 +16,7 @@ public class MinHeapQueue {
 		size = 0;
 	}
 
-	/* insert a new vertex at the end of the queue */
+	/* insert a new vertex at the end of the queue and update its index in the queue */
 	public void insert(Vertex vertex) {
 		size++;
 		vertex.queueIndex = size;
@@ -31,12 +31,12 @@ public class MinHeapQueue {
 		Vertex vertex = getVertex(ROOT);
 
 		queue.remove(ROOT); // remove min vertex at root
-		if(index > 1){
+		if (index > 1) {
 			queue.put(ROOT, getVertex(index)); // replace the root with last vertex
 			queue.remove(index); // remove the last vertex
-			getVertex(ROOT).queueIndex = ROOT;
+			getVertex(ROOT).queueIndex = ROOT; // update the index of vertex in the queue
 		}
-		size--;
+		size--; // update the number of vertices left in the queue
 
 		floatDown(ROOT); // float down the value at root to min-heapify
 
@@ -56,7 +56,6 @@ public class MinHeapQueue {
 			swap(index, getParentIndex(index));
 			index = getParentIndex(index);
 		}
-
 		return index;
 	}
 
@@ -81,7 +80,7 @@ public class MinHeapQueue {
 		}
 	}
 
-	/* swap the two vertices at given 'index' and 'parent' positions in the min heap queue */
+	/* swap the two vertices at given 'index' and 'parent' positions in the min heap queue; also update their indices in the queue */
 	public void swap(int index, int parent) {
 		Vertex temp = getVertex(index);
 
