@@ -1,3 +1,11 @@
+/*
+ * Class:			Graph.java
+ * 
+ * Author:			Devendra Bhangale
+ * 
+ * Description:		This class implements various methods to modify the nodes and directed paths in the network graph.
+ */
+
 package graphpackage;
 
 import java.util.HashMap;

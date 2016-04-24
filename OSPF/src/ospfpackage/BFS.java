@@ -1,3 +1,11 @@
+/*
+ * Class:			BFS.java
+ * 
+ * Author:			Devendra Bhangale
+ * 
+ * Description:		This class implements BFS (Breadth First Search) Algorithm to find all the reachable vertices in a dynamically changing network.
+ */
+
 package ospfpackage;
 
 import java.util.LinkedList;
@@ -7,7 +15,6 @@ import graphpackage.Edge;
 import graphpackage.Graph;
 import graphpackage.Vertex;
 
-/* Run BFS (Breadth First Search) Algorithm to find all the reachable vertices in a dynamically changing network */
 public class BFS {
 	private final int WHITE = 0; // undiscovered vertex
 	private final int GRAY = 1; // discovered vertex

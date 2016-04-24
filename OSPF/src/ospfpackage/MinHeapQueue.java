@@ -1,10 +1,17 @@
+/*
+ * Class:			MinHeapQueue.java
+ * 
+ * Author:			Devendra Bhangale
+ * 
+ * Description:		This class implements the Binary Minimum Heap Priority Queue to hold the vertices for the Dijkstra's Algorithm.
+ */
+
 package ospfpackage;
 
 import java.util.HashMap;
 
 import graphpackage.Vertex;
 
-/* Binary Minimum Heap Priority Queue */
 public class MinHeapQueue {
 	protected final int ROOT = 1; // root vertex is at positon 1 in the queue
 	protected HashMap<Integer, Vertex> queue; // data structure to hold the queue

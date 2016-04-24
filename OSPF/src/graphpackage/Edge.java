@@ -1,3 +1,11 @@
+/*
+ * Class:			Edge.java
+ * 
+ * Author:			Devendra Bhangale
+ * 
+ * Description:		This class defines the edge paramters in a network.
+ */
+
 package graphpackage;
 
 public class Edge implements MapStructure {

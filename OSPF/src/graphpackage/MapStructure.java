@@ -1,3 +1,11 @@
+/*
+ * Interface:		MapStructure.java
+ * 
+ * Author:			Devendra Bhangale
+ * 
+ * Description:		This is an interface defining some network graph parameters.
+ */
+
 package graphpackage;
 
 public interface MapStructure {

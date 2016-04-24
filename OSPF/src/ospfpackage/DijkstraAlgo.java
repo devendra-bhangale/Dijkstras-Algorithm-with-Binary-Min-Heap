@@ -1,12 +1,17 @@
+/*
+ * Class:			DijkstraAlgo.java
+ * 
+ * Author:			Devendra Bhangale
+ * 
+ * Description:		This class implements the Dijkstra's Algorithm to find the single-source shortest paths in an OSPF (Open Shortest Path First) protocol based dynamically changing network.
+ */
+
 package ospfpackage;
 
 import graphpackage.Edge;
 import graphpackage.Graph;
 import graphpackage.Vertex;
 
-/*	In an OSPF (Open Shortest Path First) protocol based dynamically changing network 
-	Dijkstra's Algorithm to find single-source shortest paths 
-	with a binary minimum heap priority queue */
 public class DijkstraAlgo {
 	private MinHeapQueue queue;
 

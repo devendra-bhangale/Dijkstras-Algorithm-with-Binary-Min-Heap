@@ -1,3 +1,11 @@
+/*
+ * Class:			StartClass.java
+ * 
+ * Author:			Devendra Bhangale
+ * 
+ * Description:		This class has main() and takes a txt file as input to construct the network graph and then serves various user requests.
+ */
+
 package mainpackage;
 
 import java.io.FileReader;

@@ -1,3 +1,11 @@
+/*
+ * Class:			Vertex.java
+ * 
+ * Author:			Devendra Bhangale
+ * 
+ * Description:		This class defines the node paramters in a network.
+ */
+
 package graphpackage;
 
 import java.util.LinkedList;
