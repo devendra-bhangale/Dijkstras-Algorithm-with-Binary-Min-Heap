@@ -1,0 +1,100 @@
+/*
+ * File:				README
+ * 
+ * Author:			Devendra Bhangale
+ * 
+ * Student ID:			800865673
+ * 
+ * Email ID:			dbhangal@uncc.edu
+ * 
+ * Description:		Summary of Project 2: Shortest Paths in a Network
+ */
+
+PROGRAMMING LANGUAGE:	Java
+COMPILER VERSION:		JDK 1.8.0_74
+
+
+BREAKDOWN OF FILES:
+Package: mainpackage
+1] StartClass.java:-	: Class implements main(); builds initial graph; serves user queries. 
+						Input	: a file to build initial network graph; user queries via standard input.
+						Output	: as per the user query.
+
+Package: graphpackage
+2] Graph.java:-		: Class provides methods to modify the network graph. 
+3] Vertex.java:-		: Class defines vertex parameters. 
+4] Edge.java:-			: Class defines edge parameters. 
+5] MapStructure.java:-	: Interface defines some graph parameters. 
+
+Package: ospfpackage
+6] DijkstraAlgo.java:-	: Class implements Dijkstra's Algorithm for single-source shortest distance path. 
+7] MinHeapQueue.java:-	: Class implements Binary Min Heap Priority Queue to hold vertices for Dijkstra. 
+8] BFS.java:-			: Class implements BFS (breadth first search) to find all reachable vertices. 
+
+9] README:-			: Summary of Project.
+
+
+TO RUN PROJECT:
+1] Copy the three package directories (mainpackage, graphpackage, ospfpackage) in your workspace directory.
+2] Open a terminal and 'cd' into your workspace directory.
+3] Use the following commands from inside your workspace directory:
+		to compile	: javac ./mainpackage/StartClass.java
+		to run		: java mainpackage.StartClass <path to input file>
+4] Once you run the program, you will be asked to 'Enter Query' wherein you can type your query.
+5] A succesful query, will output as per the query you input. In case of any error, the generated error will be printed and program will continue.
+6] Repeat steps 4 and 5 to input multiple queries.
+7] Finally input query 'quit' to exit the program.
+
+
+PROGRAM DESIGN:
+1] Graph entities:
+Data Structures:-
+HashMap		: to store all the vertices and edges in the graph. (insert: O(1) search: O(1) delete: O(1)) (worst case operations: O(n))
+Linked list	: to store adjacent vertices for each vertex. (insert: O(1) search: O(n) indexing: O(n))
+
+2] Binary Min Heap:
+Data Structures:-
+HashMap		: backbone data structure. (insert: O(1) search: O(1) delete: O(1)) (worst case operations: O(n))
+Algorithm		: O(log n) for most major operations
+
+3] Dijkstra's Algorithm:
+Data Structures:-
+Min Heap		: to queue the vertices. (insert: O(log n) search: O(n) delete: O(log n) heapify: O(log n)) (worst case operations: O(n))
+Algorithm		:  O((|V| + |E|) * log |V|) (V: vertices; E: edges)
+
+4] BFS:
+Data Structures:-
+Linked list	: to enqueue/dequeue discovered vertices in ordered fashion. (insert: O(1) search: O(n) indexing: O(n))
+Algorithm		: O(|V|+|E|)
+
+5] Reachable:
+Data Structures:-
+HashMap		: to store all the vertices in the graph. (insert: O(1) search: O(1) delete: O(1)) (worst case operations: O(n))
+Algorithm		: O(BFS * |V|) = O((|V|+|E|) * |V|) (since BFS for all vertices to find their reachable vertices)
+
+6] Alphabetical Order:
+Data Structures:-
+TreeMap		: to store all the vertices in the graph in alphabetical order. (insert: O(1) search: O(1) delete: O(1)) (worst case operations: O(n))
+
+
+WHAT WORKS AND WHAT FAILS:
+All the corner cases with respect to input queries and inner functioning are covered. Errors are respectively generated and printed on screen without halting the program.
+
+Following corner cases are handled: (they throw error without halting program)
+1] empty query or unknown query throws error.
+2] query with wrong format throws error. (Note: not enough arguments or excess arguments is considered wrong format.)
+3] except for 'addedge' query, for all other queries the input vertices are checked if they exist, else error is generated; 'addedge' performs default function and also adds the non-existing vertices in the graph. 
+4] if the source and destination vertices or tail and head vertices are the same, error is generated.
+5] if the input edge weight is either zero or negative, it is rejected and error is thrown.
+6] for 'path' query if no path is found, then 'no path found' is printed.
+7] all null cases are handled and placed in try-catch exception handlers.
+
+Following cases are not handled:
+1] if same vertex names with different case (uppercase / lowercase) letters are input, they will be considered as different names for different vertices and appropriate response for the query will given as explained above. 
+
+
+
+
+
+
+
