@@ -86,13 +86,13 @@ Following corner cases are handled: (they throw error without halting program)
 3] except for 'addedge' query, for all other queries the input vertices are checked if they exist, else error is generated; 'addedge' performs default function and also adds the non-existing vertices in the graph. 
 4] if the source and destination vertices or tail and head vertices are the same, error is generated.
 5] if the input edge weight is either zero or negative, it is rejected and error is thrown.
-6] for 'path' query if no path is found, then 'no path found' is printed.
-7] all null cases are handled and placed in try-catch exception handlers.
+6] if the input weight is not a number, it is rejected and error is generated.
+7] for 'path' query if no path is found, then 'no path found' is printed.
+8] all null cases are handled and placed in try-catch exception handlers wherever necessary.
 
 Following cases are not handled:
-1] if same vertex names with different case (uppercase / lowercase) letters are input, they will be considered as different names for different vertices and appropriate response for the query will given as explained above. 
-
-
+1] if same vertex names with different case (uppercase / lowercase) characters are input, they will be considered as different names for corresponding different vertices. 
+2] if such a case occurs where different case (uppercase / lowercase) is used for naming, the alphabetical order will be done for the names with uppercase characters first and then for the names with lower case characters. 
 
 
 
