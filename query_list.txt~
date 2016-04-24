@@ -1,0 +1,32 @@
+EXIT:
+
+quit
+
+
+CHANGES TO GRAPH:-
+
+addedge tailvertex headvertex transmit_time
+deleteedge tailvertex headvertex
+edgedown tailvertex headvertex
+edgeup tailvertex headvertex
+vertexdown vertex
+vertexup vertex
+
+
+SHORTEST PATH:-
+
+path from_vertex to_vertex
+
+
+
+PRINT GRAPH:-
+
+print
+
+
+
+REACHABLE VERTICES:-
+
+reachable
+
+
